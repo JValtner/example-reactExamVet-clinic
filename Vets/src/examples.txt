@@ -1,0 +1,101 @@
+1. primer forma i lista na istoj stranici
+function AuthorsPage() {
+  const [items, setItems] = useState<Author[]>([])
+  const [editingItem, setEditingItem] = useState<Author | null>(null)
+
+  // Load list ONCE on page load
+  useEffect(() => {
+    loadItems()
+  }, [])
+
+  const loadItems = async () => {
+    const data = await api.getAuthors()
+    setItems(data)
+  }
+
+  const handleCreate = async (dto) => {
+    await api.createAuthor(dto)
+    await loadItems()
+  }
+
+  const handleUpdate = async (dto) => {
+    await api.updateAuthor(dto)
+    setEditingItem(null)
+    await loadItems()
+  }
+
+  const handleDelete = async (id) => {
+    await api.deleteAuthor(id)
+    await loadItems()
+  }
+
+  const handleEdit = (item) => {
+    setEditingItem(item)
+  }
+
+  return (
+    <>
+      <AuthorForm
+        initialData={editingItem}
+        onCreate={handleCreate}
+        onUpdate={handleUpdate}
+        onCancel={() => setEditingItem(null)}
+      />
+
+      <AuthorList
+        items={items}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
+    </>
+  )
+}
+
+2. primer blanko jsx stranica
+import React, { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { useForm } from "react-hook-form"
+
+const BlankPage = () => {
+  const navigate = useNavigate()
+  const { id } = useParams()
+
+  const [items, setItems] = useState([])
+  const [selectedItem, setSelectedItem] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm()
+
+  useEffect(() => {
+    // TODO: fetch data on page load
+  }, [])
+
+  const onSubmit = (data) => {
+    // TODO: create or update
+  }
+
+  const onEdit = (item) => {
+    // TODO: set item for editing
+  }
+
+  const onDelete = (id) => {
+    // TODO: delete item
+  }
+
+  return (
+    <div>
+      {/* TODO: form */}
+      {/* TODO: list */}
+    </div>
+  )
+}
+
+export default BlankPage
+
+3. 
