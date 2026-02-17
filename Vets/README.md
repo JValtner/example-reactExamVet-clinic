@@ -54,3 +54,18 @@ Use the following scripts for deployment:
 ```
 
 Then follow the normal procedure in GitHub Pages and select the `gh-pages` branch.
+
+// redosled instalacije react app
+npx nano-react-app my-app
+cd.. my-app
+npm install
+npm install sass
+npm install react-hook-form
+npm install react-router-dom --save
+npm install axios
+npm start
+
+
+
+npm install @microsoft/signalr
+npm install tailwindcss
