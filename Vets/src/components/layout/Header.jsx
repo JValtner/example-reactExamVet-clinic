@@ -16,6 +16,9 @@ const Header = () => {
     <header>
       <div className="nav-bar">
         <Link to="/">Home</Link>
+        <Link to="/Patients">Patients</Link>
+        <Link to="/appointments">Appointments</Link>
+        <Link to="/doctorAppointments">Doctor Appointments</Link>
         {user ? (
           <>
             <Link to="/profile">Profile</Link>

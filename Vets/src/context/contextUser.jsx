@@ -47,6 +47,7 @@ export default function UserProvider({ children }) {
     const data = await loginService(credentials);
     const t = data.token ?? data.accessToken;
     if (t) {
+      getCurrentProfile().then((data) => setUser(data.user ?? data));
       setToken(t);
       setTokenState(t);
       setRoles(getUserRolesFromToken(t));

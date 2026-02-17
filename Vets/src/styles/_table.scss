@@ -1,0 +1,83 @@
+.table {
+  td {
+    padding: 0.75rem;
+    border-collapse: collapse;
+    border: none;
+    text-align: left;
+  }
+
+  td.actions-cell {
+    text-align: center;
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.3rem 0.6rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.2s ease;
+    }
+
+    .btn-edit {
+      background-color: #c4defa;
+      color: rgb(17, 12, 118);
+
+      &:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+    }
+
+    .btn-delete {
+      background-color: #f4d3d6;
+      color: rgb(74, 4, 4);
+
+      &:hover {
+        background-color: #a71d2a;
+        color: white;
+      }
+    }
+  }
+}
+
+/* Responsive tables */
+@media (max-width: $breakpoint-md) {
+  .table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+    border: none;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+
+    &::before {
+      content: attr(data-label);
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+  }
+}
